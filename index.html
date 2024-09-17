@@ -1,0 +1,902 @@
+<html><head><base href="https://www.zarfstrategy.com/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZARF Strategy - Investimento Inteligente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --text-color: #333;
+            --bg-color: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .ticker-tape {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+        }
+
+        .ticker-item .percentage.positive {
+            color: #4CAF50;
+        }
+
+        .ticker-item .percentage.negative {
+            color: #FF5252;
+        }
+
+        .ticker-tape-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 60s linear infinite;
+        }
+        
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+        
+        .ticker-item {
+            display: inline-block;
+            padding: 0 2rem;
+        }
+        
+        .company-name {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 0;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        main {
+            padding-top: 150px;
+        }
+        
+        .hero {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #2563eb;
+        }
+        
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .strategy-item {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .strategy-item i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .strategy-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .performance-chart {
+            width: 100%;
+            height: 400px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .performance-chart svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .performance-chart text {
+            font-size: 12px;
+            fill: #333;
+        }
+
+        .performance-chart path {
+            animation: drawLine 2s ease-out forwards;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+        }
+
+        @keyframes drawLine {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .performance-chart circle {
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .calculator {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .calculator h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .calculator-form {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .calculator-form label {
+            font-weight: 600;
+        }
+        
+        .calculator-form input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        #calculate-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        #calculate-btn:hover {
+            background-color: #2563eb;
+        }
+        
+        #result {
+            margin-top: 1rem;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .blog-post {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .blog-post img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .blog-post-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-post h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-post p {
+            margin-bottom: 1rem;
+        }
+        
+        .read-more {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .performance-details {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        .performance-details h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .performance-details ul {
+            list-style-type: none;
+        }
+
+        .performance-details li {
+            margin-bottom: 0.5rem;
+        }
+
+        .pamm-info-content {
+            margin-bottom: 2rem;
+        }
+        
+        .news-sources-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .news-source {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin: 0.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .news-source i {
+            margin-right: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .performance-chart path,
+        .performance-chart circle {
+            cursor: pointer;
+        }
+
+        .performance-chart circle.active {
+            r: 6;
+            stroke: #333;
+            stroke-width: 2;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        .broker-info-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .broker-info-content h3 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .broker-info-content ul {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+
+        .broker-info-content ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .broker-info-content ul li::before {
+            content: "•";
+            color: var(--secondary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .vision-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .vision-content p {
+            margin-bottom: 1rem;
+        }
+
+        .vision-content p:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="ticker-tape">
+        <div class="ticker-tape-content">
+            <span class="ticker-item">EUR/USD: 1.1850 (<span class="percentage positive">+0.15%</span>)</span>
+            <span class="ticker-item">GBP/USD: 1.3750 (<span class="percentage negative">-0.10%</span>)</span>
+            <span class="ticker-item">USD/JPY: 110.20 (<span class="percentage positive">+0.25%</span>)</span>
+            <span class="ticker-item">USD/BRL: 5.2500 (<span class="percentage positive">+0.20%</span>)</span>
+            <span class="ticker-item">S&P 500: 4,385 (<span class="percentage positive">+0.50%</span>)</span>
+            <span class="ticker-item">NASDAQ: 14,750 (<span class="percentage positive">+0.75%</span>)</span>
+            <span class="ticker-item">Dow Jones: 34,800 (<span class="percentage positive">+0.30%</span>)</span>
+            <span class="ticker-item">FTSE 100: 7,100 (<span class="percentage negative">-0.20%</span>)</span>
+            <span class="ticker-item">Nikkei 225: 28,500 (<span class="percentage positive">+0.60%</span>)</span>
+        </div>
+    </div>
+
+    <div class="company-name">
+        <div class="container">
+            ZARF Strategy Investimentos
+        </div>
+    </div>
+
+    <header>
+        <nav class="container">
+            <div class="logo">ZARF Strategy Investimentos</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#strategy">Estratégia</a></li>
+                <li><a href="#pamm-info">O que é uma conta PAMM?</a></li>
+                <li><a href="#performance">Performance</a></li>
+                <li><a href="#calculator">Calculadora</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Maximize seus investimentos com ZARF Strategy</h1>
+                <p>Estratégias avançadas de trading com risco controlado e retornos consistentes</p>
+                <a href="https://mmsa.ltd/EviMby" class="cta-button">Comece a Investir</a>
+            </div>
+        </section>
+
+        <section id="strategy" class="section">
+            <div class="container">
+                <h2 class="section-title">Nossa Estratégia de Investimento</h2>
+                <div class="strategy-grid">
+                    <div class="strategy-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Análise Técnica Avançada</h3>
+                        <p>Utilizamos indicadores e padrões gráficos para identificar as melhores oportunidades.</p>
+                    </div>
+                    <div class="strategy-item">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3>Gestão de Risco Rigorosa</h3>
+                        <p>Implementamos stop-loss e take-profit para proteger o capital dos investidores.</p>
+                    </div>
+                    <div class="strategy-item">
+                        <i class="fas fa-robot"></i>
+                        <h3>Algoritmos de Trading</h3>
+                        <p>Desenvolvemos e otimizamos algoritmos para executar trades com precisão.</p>
+                    </div>
+                    <div class="strategy-item">
+                        <i class="fas fa-globe"></i>
+                        <h3>Diversificação Global</h3>
+                        <p>Operamos em múltiplos mercados e ativos para reduzir o risco e maximizar retornos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pamm-info" class="section">
+            <div class="container">
+                <h2 class="section-title">O que é uma conta PAMM?</h2>
+                <div class="pamm-info-content">
+                    <p>PAMM (Percent Allocation Management Module) é um sistema de gestão de investimentos que permite que investidores participem de estratégias de trading profissionais. Aqui está como funciona:</p>
+                    <ul>
+                        <li>Investidores confiam seu capital a um gestor profissional.</li>
+                        <li>O gestor opera no mercado usando fundos combinados de vários investidores.</li>
+                        <li>Lucros e perdas são distribuídos proporcionalmente entre os investidores.</li>
+                        <li>Os investidores mantêm controle total sobre seus fundos e podem retirar a qualquer momento.</li>
+                    </ul>
+                    <p>Com a ZARF Strategy Investimentos, você pode começar a investir com apenas R$ 500 e obter os mesmos resultados proporcionais aos grandes investidores. Isso democratiza o acesso a estratégias de investimento profissionais e permite que você diversifique seu portfólio com eficiência.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="performance" class="section">
+            <div class="container">
+                <h2 class="section-title">Histórico de Performance</h2>
+                <div class="performance-chart">
+                    <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- X and Y axis -->
+                        <line x1="50" y1="350" x2="750" y2="350" stroke="black" />
+                        <line x1="50" y1="350" x2="50" y2="50" stroke="black" />
+
+                        <!-- X axis labels -->
+                        <text x="50" y="370" text-anchor="middle">0</text>
+                        <text x="400" y="370" text-anchor="middle">15</text>
+                        <text x="750" y="370" text-anchor="middle">30</text>
+                        <text x="400" y="390" text-anchor="middle">Dias</text>
+
+                        <!-- Y axis labels -->
+                        <text x="40" y="350" text-anchor="end">100k</text>
+                        <text x="40" y="200" text-anchor="end">108k</text>
+                        <text x="40" y="50" text-anchor="end">116k</text>
+                        <text x="30" y="200" text-anchor="middle" transform="rotate(-90 30 200)">Valor (R$)</text>
+
+                        <!-- Updated Performance line with data points -->
+                        <path id="performance-line" d="M50 350 Q100 340, 150 320 T250 300 T350 260 T450 220 T550 160 T650 100 T750 50" stroke="#4CAF50" stroke-width="3" fill="none" />
+
+                        <!-- Data points -->
+                        <circle cx="50" cy="350" r="4" fill="#4CAF50" data-value="100000" />
+                        <circle cx="150" cy="320" r="4" fill="#4CAF50" data-value="102000" />
+                        <circle cx="250" cy="300" r="4" fill="#4CAF50" data-value="104000" />
+                        <circle cx="350" cy="260" r="4" fill="#4CAF50" data-value="107000" />
+                        <circle cx="450" cy="220" r="4" fill="#4CAF50" data-value="110000" />
+                        <circle cx="550" cy="160" r="4" fill="#4CAF50" data-value="113000" />
+                        <circle cx="650" cy="100" r="4" fill="#4CAF50" data-value="115000" />
+                        <circle cx="750" cy="50" r="4" fill="#4CAF50" data-value="116000" />
+
+                        <!-- Value display -->
+                        <text id="value-display" x="400" y="30" text-anchor="middle" font-size="14" fill="#333" display="none"></text>
+                    </svg>
+                </div>
+                <div class="performance-details">
+                    <h3>Detalhes de Performance</h3>
+                    <ul>
+                        <li>Saldo Inicial: R$ 100.000,00</li>
+                        <li>Rendimento Mensal: R$ 16.000,00</li>
+                        <li>Rendimento Percentual: 16% ao mês</li>
+                        <li>Rendimento Anual Projetado: 192% (não composto)</li>
+                    </ul>
+                </div>
+                <p>* Rentabilidade passada não garante resultados futuros. Investimentos envolvem riscos.</p>
+            </div>
+        </section>
+
+        <section id="news-sources" class="section">
+            <div class="container">
+                <h2 class="section-title">Fontes Confiáveis de Notícias Financeiras</h2>
+                <div class="news-sources-list">
+                    <span class="news-source"><i class="fab fa-cnbc"></i> CNBC</span>
+                    <span class="news-source"><i class="fab fa-yahoo"></i> Yahoo Finanças</span>
+                    <span class="news-source"><i class="fas fa-chart-line"></i> NASDAQ</span>
+                    <span class="news-source"><i class="fas fa-chart-bar"></i> Investing</span>
+                    <span class="news-source"><i class="fab fa-bloomberg"></i> Bloomberg</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="calculator" class="section">
+            <div class="container">
+                <h2 class="section-title">Calculadora de Retorno</h2>
+                <div class="calculator">
+                    <h3>Simule seu Investimento</h3>
+                    <p>Comece a investir com apenas R$ 500 e veja seus ganhos potenciais!</p>
+                    <form class="calculator-form">
+                        <label for="investment">Valor do Investimento (R$):</label>
+                        <input type="number" id="investment" min="500" step="100" required>
+                        <label for="days">Período (dias):</label>
+                        <input type="number" id="days" min="1" required>
+                        <button type="button" id="calculate-btn">Calcular</button>
+                    </form>
+                    <div id="result"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="broker-info" class="section">
+            <div class="container">
+                <h2 class="section-title">Nossa Corretora: Moneta Markets</h2>
+                <div class="broker-info-content">
+                    <p>Na ZARF Strategy Investimentos, priorizamos a segurança e a confiabilidade. É por isso que escolhemos a Moneta Markets como nossa corretora parceira. Aqui estão os motivos pelos quais você pode confiar na Moneta Markets:</p>
+                    
+                    <h3>Seguro de Custódia</h3>
+                    <p>A Moneta Markets oferece um robusto seguro de custódia que protege os fundos dos clientes. Este seguro garante que seu capital esteja protegido mesmo em circunstâncias imprevistas, proporcionando uma camada adicional de segurança para seus investimentos.</p>
+                    
+                    <h3>Regulamentações e Licenças</h3>
+                    <ul>
+                        <li><strong>ASIC (Austrália):</strong> Regulada pela Australian Securities and Investments Commission (Licença nº 434508).</li>
+                        <li><strong>FCA (Reino Unido):</strong> Autorizada e regulada pela Financial Conduct Authority (Número de Referência: 795358).</li>
+                        <li><strong>FSA (Seychelles):</strong> Licenciada pela Financial Services Authority das Seychelles (Licença nº SD055).</li>
+                        <li><strong>FSC (Maurício):</strong> Regulada pela Financial Services Commission de Maurício (Licença nº C117022522).</li>
+                    </ul>
+                    
+                    <h3>Proteção Adicional</h3>
+                    <p>Além das regulamentações, a Moneta Markets implementa:</p>
+                    <ul>
+                        <li>Segregação de fundos dos clientes em contas bancárias separadas.</li>
+                        <li>Criptografia de ponta a ponta para todas as transações e dados pessoais.</li>
+                        <li>Conformidade com padrões internacionais de segurança cibernética.</li>
+                    </ul>
+                    
+                    <p>Ao escolher a ZARF Strategy Investimentos e a Moneta Markets, você está optando por uma parceria que prioriza a segurança, a transparência e a conformidade regulatória, garantindo que seus investimentos estejam em boas mãos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="section">
+            <div class="container">
+                <h2 class="section-title">Blog e Notícias</h2>
+                <div class="blog-grid">
+                    <div class="blog-post">
+                        <img alt="Robô de trading analisando múltiplos gráficos em tempo real" src="https://via.placeholder.com/300x200.png?text=Algoritmos+de+Trading" width="300" height="200">
+                        <div class="blog-post-content">
+                            <h3>A Superioridade dos Algoritmos de Trading</h3>
+                            <p>Descubra como os algoritmos de trading superam consistentemente os traders humanos, eliminando emoções e executando estratégias 24/7 com precisão milimétrica.</p>
+                            <a href="#detailed-blog-1" class="read-more">Leia mais</a>
+                        </div>
+                    </div>
+                    <div class="blog-post">
+                        <img alt="Gráfico mostrando crescimento consistente de uma conta PAMM" src="https://via.placeholder.com/300x200.png?text=Vantagens+PAMM" width="300" height="200">
+                        <div class="blog-post-content">
+                            <h3>Por que Escolher nossa Conta PAMM?</h3>
+                            <p>Entenda como nossa conta PAMM oferece acesso a estratégias de elite, diversificação e gestão de risco profissional, mesmo com investimentos a partir de R$ 500.</p>
+                            <a href="#detailed-blog-2" class="read-more">Leia mais</a>
+                        </div>
+                    </div>
+                    <div class="blog-post">
+                        <img alt="Comparação de resultados entre trading manual e algorítmico" src="https://via.placeholder.com/300x200.png?text=Efici%C3%AAncia+Comprovada" width="300" height="200">
+                        <div class="blog-post-content">
+                            <h3>Eficiência Comprovada: Dados que Não Mentem</h3>
+                            <p>Analise estudos e estatísticas que demonstram a superioridade dos algoritmos de trading em termos de consistência, velocidade e aproveitamento de oportunidades.</p>
+                            <a href="#detailed-blog-3" class="read-more">Leia mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="detailed-blog-1" class="section">
+            <div class="container">
+                <h2 class="section-title">A Superioridade dos Algoritmos de Trading</h2>
+                <p>Os algoritmos de trading têm consistentemente demonstrado sua superioridade em relação aos traders humanos por várias razões:</p>
+                <ul>
+                    <li>Eliminação de emoções: Algoritmos não são afetados por medo, ganância ou outros fatores emocionais que podem levar a decisões impulsivas.</li>
+                    <li>Execução 24/7: Diferentemente dos humanos, os algoritmos podem operar continuamente, aproveitando oportunidades em qualquer momento.</li>
+                    <li>Velocidade de execução: Algoritmos podem analisar dados e executar trades em milissegundos, superando a capacidade humana.</li>
+                    <li>Consistência: As estratégias são aplicadas de forma consistente, sem desvios ou hesitações.</li>
+                    <li>Capacidade de processamento: Algoritmos podem analisar grandes volumes de dados e múltiplos mercados simultaneamente.</li>
+                </ul>
+                <p>Nossos algoritmos de trading são constantemente otimizados e testados para garantir o máximo desempenho e adaptabilidade às condições de mercado em constante mudança.</p>
+            </div>
+        </section>
+
+        <section id="detailed-blog-2" class="section">
+            <div class="container">
+                <h2 class="section-title">Por que Escolher nossa Conta PAMM?</h2>
+                <p>Nossa conta PAMM oferece vantagens únicas para investidores:</p>
+                <ul>
+                    <li>Acesso a estratégias de elite: Beneficie-se de algoritmos de trading avançados, normalmente disponíveis apenas para grandes investidores institucionais.</li>
+                    <li>Baixo investimento inicial: Comece com apenas R$ 500 e obtenha os mesmos resultados proporcionais aos grandes investidores.</li>
+                    <li>Diversificação eficiente: Seu investimento é distribuído em múltiplas estratégias e mercados, reduzindo o risco.</li>
+                    <li>Gestão de risco profissional: Nossas estratégias incluem rigorosos controles de risco para proteger seu capital.</li>
+                    <li>Transparência total: Acompanhe o desempenho de seu investimento em tempo real.</li>
+                    <li>Flexibilidade: Faça aportes ou resgates a qualquer momento, sem taxas de lock-up.</li>
+                </ul>
+                <p>Com nossa conta PAMM, você pode acessar o potencial de ganhos do mercado financeiro global com a tranquilidade de uma gestão profissional e algorítmica.</p>
+            </div>
+        </section>
+
+        <section id="detailed-blog-3" class="section">
+            <div class="container">
+                <h2 class="section-title">Eficiência Comprovada: Dados que Não Mentem</h2>
+                <p>Estudos e estatísticas consistentemente demonstram a superioridade dos algoritmos de trading:</p>
+                <ul>
+                    <li>Consistência: Algoritmos mantêm uma performance mais estável ao longo do tempo, com menor variação de resultados.</li>
+                    <li>Velocidade: Em um estudo da NYSE, algoritmos executaram ordens em média 1.000 vezes mais rápido que traders humanos.</li>
+                    <li>Aproveitamento de oportunidades: Algoritmos podem identificar e agir sobre micro-tendências imperceptíveis para humanos.</li>
+                    <li>Redução de erros: Um estudo da Aite Group mostrou que o uso de algoritmos reduziu erros de trading em até 50%.</li>
+                    <li>Resultados superiores: Segundo um relatório da Preqin, fundos quantitativos (baseados em algoritmos) superaram consistentemente fundos tradicionais nos últimos 5 anos.</li>
+                </ul>
+                <p>Nossos próprios dados internos mostram que nossas estratégias algorítmicas têm superado benchmarks de mercado em mais de 70% dos meses nos últimos 3 anos.</p>
+            </div>
+        </section>
+        
+        <section id="vision" class="section">
+            <div class="container">
+                <h2 class="section-title">Nossa Visão Geral</h2>
+                <div class="vision-content">
+                    <p>A ZARF Strategy Investimentos, ao oferecer soluções personalizadas de gestão de contas PAMM, transcende a mera alocação de recursos financeiros. A empresa atua como catalisadora de um futuro mais promissor, impulsionando o crescimento econômico e social. Ao investir em empresas e projetos inovadores e sustentáveis, a ZARF contribui para a construção de um mundo mais justo e equitativo.</p>
+                    <p>Além disso, ao empoderar seus clientes financeiramente e se engajar em iniciativas de responsabilidade social, a ZARF demonstra seu compromisso com um futuro mais sustentável. A transparência e a autenticidade com que a ZARF comunica seu impacto atraem clientes que compartilham de seus valores, fortalecendo sua posição no mercado e consolidando sua reputação como uma empresa que vai além dos números.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2023 ZARF Strategy Investimentos. Todos os direitos reservados.</p>
+                <ul class="footer-links">
+                    <li><a href="#">Termos de Serviço</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="https://wa.me/554598483350"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                    <li><a href="tel:+554598483350"><i class="fas fa-phone"></i> +55 45 9848-3350</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function updateTicker() {
+            const tickerItems = document.querySelectorAll('.ticker-item');
+            tickerItems.forEach(item => {
+                const parts = item.textContent.split(':');
+                if (parts.length === 2) {
+                    const symbol = parts[0].trim();
+                    let value = parseFloat(parts[1]);
+                    const change = (Math.random() - 0.5) * 0.2;
+                    value += change;
+                    const formattedChange = change >= 0 ? `+${change.toFixed(2)}%` : `${change.toFixed(2)}%`;
+                    
+                    if (['EUR/USD', 'GBP/USD', 'USD/JPY', 'USD/BRL'].includes(symbol)) {
+                        item.innerHTML = `${symbol}: ${value.toFixed(4)} (<span class="percentage ${change >= 0 ? 'positive' : 'negative'}">${formattedChange}</span>)`;
+                    } else {
+                        item.innerHTML = `${symbol}: ${value.toFixed(0)} (<span class="percentage ${change >= 0 ? 'positive' : 'negative'}">${formattedChange}</span>)`;
+                    }
+                }
+            });
+        }
+
+        setInterval(updateTicker, 5000);
+        updateTicker();
+
+        document.getElementById('calculate-btn').addEventListener('click', function() {
+            const investment = parseFloat(document.getElementById('investment').value);
+            const days = parseInt(document.getElementById('days').value);
+            
+            if (isNaN(investment) || isNaN(days) || investment < 500 || days < 1) {
+                alert('Por favor, insira valores válidos. O investimento mínimo é de R$ 500.');
+                return;
+            }
+            
+            const dailyReturn = 8 / 1000;
+            const totalReturn = investment * Math.pow(1 + dailyReturn, days);
+            const profit = totalReturn - investment;
+            
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = `
+                <p>Investimento Inicial: R$ ${investment.toFixed(2)}</p>
+                <p>Retorno Estimado: R$ ${totalReturn.toFixed(2)}</p>
+                <p>Lucro: R$ ${profit.toFixed(2)}</p>
+                <p>Rendimento: ${((profit / investment) * 100).toFixed(2)}%</p>
+            `;
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const svg = document.querySelector('.performance-chart svg');
+            const valueDisplay = document.getElementById('value-display');
+            const performanceLine = document.getElementById('performance-line');
+            const dataPoints = svg.querySelectorAll('circle');
+
+            function showValue(x, y, value) {
+                valueDisplay.textContent = `R$ ${value.toLocaleString()}`;
+                valueDisplay.setAttribute('x', x);
+                valueDisplay.setAttribute('y', y - 15);
+                valueDisplay.style.display = 'block';
+            }
+
+            function hideValue() {
+                valueDisplay.style.display = 'none';
+            }
+
+            function activateDataPoint(point) {
+                dataPoints.forEach(p => p.classList.remove('active'));
+                point.classList.add('active');
+            }
+
+            svg.addEventListener('click', function(e) {
+                const rect = svg.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Check if clicked on a data point
+                const clickedPoint = Array.from(dataPoints).find(point => {
+                    const cx = parseFloat(point.getAttribute('cx'));
+                    const cy = parseFloat(point.getAttribute('cy'));
+                    return Math.sqrt((x - cx) ** 2 + (y - cy) ** 2) < 10;
+                });
+
+                if (clickedPoint) {
+                    const value = clickedPoint.getAttribute('data-value');
+                    showValue(clickedPoint.getAttribute('cx'), clickedPoint.getAttribute('cy'), value);
+                    activateDataPoint(clickedPoint);
+                } else {
+                    // If clicked on the line, find the closest point
+                    const closestPoint = Array.from(dataPoints).reduce((closest, point) => {
+                        const cx = parseFloat(point.getAttribute('cx'));
+                        const cy = parseFloat(point.getAttribute('cy'));
+                        const distance = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2);
+                        return distance < closest.distance ? { point, distance } : closest;
+                    }, { point: null, distance: Infinity }).point;
+
+                    if (closestPoint) {
+                        const value = closestPoint.getAttribute('data-value');
+                        showValue(closestPoint.getAttribute('cx'), closestPoint.getAttribute('cy'), value);
+                        activateDataPoint(closestPoint);
+                    }
+                }
+            });
+
+            svg.addEventListener('mouseleave', hideValue);
+        });
+    </script>
+</body>
+</html>
