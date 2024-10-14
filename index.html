@@ -695,7 +695,7 @@
                     <p>Comece a investir com apenas R$ 100 e veja seus ganhos potenciais!</p>
                     <form class="calculator-form">
                         <label for="investment">Valor do Investimento (R$):</label>
-                        <input type="number" id="investment" min= "100" step="100" required>
+                        <input type="number" id="investment" min="100" step="100" required>
                         <label for="days">Período (dias):</label>
                         <input type="number" id="days" min="1" required>
                         <button type="button" id="calculate-btn">Calcular</button>
@@ -796,7 +796,7 @@
                         <img alt="Gráfico mostrando crescimento consistente de uma conta PAMM" src="IMG-20240917-WA0115.jpeg" width="300" height="200">
                         <div class="blog-post-content">
                             <h3>Por que Escolher nossa Conta PAMM?</h3>
-                            <p>Entenda como nossa conta PAMM oferece acesso a estratégias de elite, diversificação e gestão de risco profissional, mesmo com investimentos a partir de R$ 500.</p>
+                            <p>Entenda como nossa conta PAMM oferece acesso a estratégias de elite, diversificação e gestão de risco profissional, mesmo com investimentos a partir de R$ 100.</p>
                             <a href="#detailed-blog-2" class="read-more">Leia mais</a>
                         </div>
                     </div>
@@ -918,8 +918,8 @@
             const investment = parseFloat(document.getElementById('investment').value);
             const days = parseInt(document.getElementById('days').value);
             
-            if (isNaN(investment) || isNaN(days) || investment < 500 || days < 1) {
-                alert('Por favor, insira valores válidos. O investimento mínimo é de R$ 500.');
+            if (isNaN(investment) || isNaN(days) || investment < 100 || days < 1) {
+                alert('Por favor, insira valores válidos. O investimento mínimo é de R$ 100.');
                 return;
             }
             
