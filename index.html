@@ -857,7 +857,59 @@
                 <p>Nossos próprios dados internos mostram que nossas estratégias algorítmicas têm superado benchmarks de mercado em mais de 70% dos meses nos últimos 3 anos.</p>
             </div>
         </section>
+<section id="whatsapp-button" class="section">
+    <div class="container">
+        <!-- Botão flutuante do WhatsApp -->
+        <a href="https://wa.me/5545999446783" class="whatsapp-button" target="_blank" aria-label="Chat no WhatsApp">
+            <span class="whatsapp-icon">💬</span>
+            <span class="whatsapp-text">Chat</span>
+        </a>
 
+        <style>
+            /* Estilo do botão flutuante do WhatsApp */
+            .whatsapp-button {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px 15px;
+                background-color: #25d366;
+                color: white;
+                border-radius: 30px;
+                font-size: 16px;
+                font-weight: bold;
+                text-decoration: none;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+                transition: all 0.3s ease;
+                z-index: 1000;
+            }
+
+            .whatsapp-button:hover {
+                background-color: #22c35e;
+                box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+                transform: translateY(-3px);
+            }
+
+            /* Estilo do ícone e do texto */
+            .whatsapp-icon {
+                font-size: 20px;
+                margin-right: 8px;
+            }
+
+            .whatsapp-text {
+                font-family: Arial, sans-serif;
+            }
+        </style>
+
+        <script>
+            document.querySelector('.whatsapp-button').addEventListener('click', function() {
+                console.log("Botão do WhatsApp clicado!");
+            });
+        </script>
+    </div>
+</section>
         <section id="vision" class="section">
             <div class="container">
                 <h2 class="section-title">Nossa Visão Geral</h2>
