@@ -623,6 +623,42 @@
             </div>
         </section>
 
+       
+
+        <section id="news-sources" class="section">
+            <div class="container">
+                <h2 class="section-title">Fontes Confiáveis de Notícias Financeiras</h2>
+                <div class="news-sources-list">
+                    <span class="news-source"><i class="fab fa-cnbc"></i> CNBC</span>
+                    <span class="news-source"><i class="fab fa-yahoo"></i> Yahoo Finanças</span>
+                    <span class="news-source"><i class="fas fa-chart-line"></i> NASDAQ</span>
+                    <span class="news-source"><i class="fas fa-chart-bar"></i> Investing</span>
+                    <span class="news-source"><i class="fab fa-bloomberg"></i> Bloomberg</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="calculator" class="section">
+            <div class="container">
+                <h2 class="section-title">Calculadora de Retorno</h2>
+                <div class="calculator">
+                    <h3>Simule seu Investimento</h3>
+                    <p>Comece a investir com apenas R$ 100 e veja seus ganhos potenciais!</p>
+                    <form class="calculator-form">
+                        <label for="investment">Valor do Investimento (R$):</label>
+                        <input type="number" id="investment" min="100" step="100" required>
+                        <label for="days">Período (dias):</label>
+                        <input type="number" id="days" min="1" required>
+                        <button type="button" id="calculate-btn">Calcular</button>
+                    </form>
+                    <div id="result"></div>
+                </div>
+            </div>
+        </section>
+     <p>* Rentabilidade passada não garante resultados futuros.</p>
+            </div>
+        </section>
+        
         <section id="performance" class="section">
             <div class="container">
                 <h2 class="section-title">Histórico de Performance</h2>
@@ -673,72 +709,7 @@
                 <p>* Rentabilidade passada não garante resultados futuros. Investimentos envolvem riscos.</p>
             </div>
         </section>
-
-        <section id="news-sources" class="section">
-            <div class="container">
-                <h2 class="section-title">Fontes Confiáveis de Notícias Financeiras</h2>
-                <div class="news-sources-list">
-                    <span class="news-source"><i class="fab fa-cnbc"></i> CNBC</span>
-                    <span class="news-source"><i class="fab fa-yahoo"></i> Yahoo Finanças</span>
-                    <span class="news-source"><i class="fas fa-chart-line"></i> NASDAQ</span>
-                    <span class="news-source"><i class="fas fa-chart-bar"></i> Investing</span>
-                    <span class="news-source"><i class="fab fa-bloomberg"></i> Bloomberg</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="calculator" class="section">
-            <div class="container">
-                <h2 class="section-title">Calculadora de Retorno</h2>
-                <div class="calculator">
-                    <h3>Simule seu Investimento</h3>
-                    <p>Comece a investir com apenas R$ 100 e veja seus ganhos potenciais!</p>
-                    <form class="calculator-form">
-                        <label for="investment">Valor do Investimento (R$):</label>
-                        <input type="number" id="investment" min="100" step="100" required>
-                        <label for="days">Período (dias):</label>
-                        <input type="number" id="days" min="1" required>
-                        <button type="button" id="calculate-btn">Calcular</button>
-                    </form>
-                    <div id="result"></div>
-                </div>
-            </div>
-        </section>
-     <p>* Rentabilidade passada não garante resultados futuros.</p>
-            </div>
-        </section>
-
-        <section id="broker-info" class="section">
-            <div class="container">
-                <h2 class="section-title">Nossa Corretora: Moneta Markets</h2>
-                <div class="broker-info-content">
-                    <p>Na ZARF Strategy Security, priorizamos a segurança e a confiabilidade. É por isso que escolhemos a Moneta Markets como nossa corretora parceira. Aqui estão os motivos pelos quais você pode confiar na Moneta Markets:</p>
-                    
-                    <h3>Seguro de Custódia</h3>
-                    <p>A Moneta Markets oferece um robusto seguro de custódia que protege os fundos dos clientes. Este seguro garante que seu capital esteja protegido mesmo em circunstâncias imprevistas, proporcionando uma camada adicional de segurança para seus investimentos.</p>
-                    
-                    <h3>Regulamentações e Licenças</h3>
-                    <ul>
-                        <li><strong>ASIC (Austrália):</strong> Regulada pela Australian Securities and Investments Commission (Licença nº 434508).</li>
-                        <li><strong>FCA (Reino Unido):</strong> Autorizada e regulada pela Financial Conduct Authority (Número de Referência: 795358).</li>
-                        <li><strong>FSA (Seychelles):</strong> Licenciada pela Financial Services Authority das Seychelles (Licença nº SD055).</li>
-                        <li><strong>FSC (Maurício):</strong> Regulada pela Financial Services Commission de Maurício (Licença nº C117022522).</li>
-                    </ul>
-                    
-                    <h3>Proteção Adicional</h3>
-                    <p>Além das regulamentações, a Moneta Markets implementa:</p>
-                    <ul>
-                        <li>Segregação de fundos dos clientes em contas bancárias separadas.</li>
-                        <li>Criptografia de ponta a ponta para todas as transações e dados pessoais.</li>
-                        <li>Conformidade com padrões internacionais de segurança cibernética.</li>
-                    </ul>
-                    
-                    <p>Ao escolher a ZARF Strategy e a Moneta Markets, você está optando por uma parceria que prioriza a segurança, a transparência e a conformidade regulatória, garantindo que seus investimentos estejam em boas mãos.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="step-by-step" class="section">
+  <section id="step-by-step" class="section">
             <div class="container">
                 <h2 class="section-title">Passo a Passo para Investir</h2>
                 <div class="step-by-step-content">
@@ -776,6 +747,35 @@
                         <p>Através desse portal, o investidor pode fazer saques, depósitos e acompanhar todas as operações realizadas. Lembrando que todos os saques devem ser aprovados pelo gestor.</p>
                         <a href="https://pamm9.monetamarkets.com/app/auth/investor" class="cta-button">Acessar Portal do Investidor</a>
                     </div>
+                </div>
+            </div>
+        </section>
+        <section id="broker-info" class="section">
+            <div class="container">
+                <h2 class="section-title">Nossa Corretora: Moneta Markets</h2>
+                <div class="broker-info-content">
+                    <p>Na ZARF Strategy Security, priorizamos a segurança e a confiabilidade. É por isso que escolhemos a Moneta Markets como nossa corretora parceira. Aqui estão os motivos pelos quais você pode confiar na Moneta Markets:</p>
+                    
+                    <h3>Seguro de Custódia</h3>
+                    <p>A Moneta Markets oferece um robusto seguro de custódia que protege os fundos dos clientes. Este seguro garante que seu capital esteja protegido mesmo em circunstâncias imprevistas, proporcionando uma camada adicional de segurança para seus investimentos.</p>
+                    
+                    <h3>Regulamentações e Licenças</h3>
+                    <ul>
+                        <li><strong>ASIC (Austrália):</strong> Regulada pela Australian Securities and Investments Commission (Licença nº 434508).</li>
+                        <li><strong>FCA (Reino Unido):</strong> Autorizada e regulada pela Financial Conduct Authority (Número de Referência: 795358).</li>
+                        <li><strong>FSA (Seychelles):</strong> Licenciada pela Financial Services Authority das Seychelles (Licença nº SD055).</li>
+                        <li><strong>FSC (Maurício):</strong> Regulada pela Financial Services Commission de Maurício (Licença nº C117022522).</li>
+                    </ul>
+                    
+                    <h3>Proteção Adicional</h3>
+                    <p>Além das regulamentações, a Moneta Markets implementa:</p>
+                    <ul>
+                        <li>Segregação de fundos dos clientes em contas bancárias separadas.</li>
+                        <li>Criptografia de ponta a ponta para todas as transações e dados pessoais.</li>
+                        <li>Conformidade com padrões internacionais de segurança cibernética.</li>
+                    </ul>
+                    
+                    <p>Ao escolher a ZARF Strategy e a Moneta Markets, você está optando por uma parceria que prioriza a segurança, a transparência e a conformidade regulatória, garantindo que seus investimentos estejam em boas mãos.</p>
                 </div>
             </div>
         </section>
