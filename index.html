@@ -924,7 +924,7 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2022 ZARF Strategy Security. Todos os direitos reservados.</p>
+                <p>&copy; 2023 ZARF Strategy Security. Todos os direitos reservados.</p>
                 <ul class="footer-links">
                     <li><a href="#">Termos de Serviço</a></li>
                     <li><a href="#">Política de Privacidade</a></li>
@@ -942,35 +942,6 @@
         </div>
     </footer>
 
-<script>
-    function updateTicker() {
-        const tickers = [
-            { id: 'dow', name: 'Dow Jones', value: 33000, change: (Math.random() - 0.5) * 100 }, // Simula mudança
-            { id: 'nasdaq', name: 'NASDAQ', value: 13000, change: (Math.random() - 0.5) * 100 },
-            { id: 'sp500', name: 'S&P 500', value: 4000, change: (Math.random() - 0.5) * 100 },
-            { id: 'eur-usd', name: 'EUR/USD', value: 1.10, change: (Math.random() - 0.5) * 0.05 },
-            { id: 'gbp-usd', name: 'GBP/USD', value: 1.30, change: (Math.random() - 0.5) * 0.05 },
-            { id: 'usd-jpy', name: 'USD/JPY', value: 110.00, change: (Math.random() - 0.5) * 0.5 },
-        ];
-
-        tickers.forEach(ticker => {
-            const element = document.getElementById(ticker.id);
-            const value = ticker.value + ticker.change;
-            const percentageChange = (ticker.change / ticker.value * 100).toFixed(2);
-            const formattedChange = percentageChange >= 0 ? `+${percentageChange}%` : `${percentageChange}%`;
-
-            // Atualiza o texto do item
-            element.innerHTML = `${ticker.name}: ${value.toFixed(ticker.id === 'usd-brl' ? 2 : 0)} (<span class="percentage ${percentageChange >= 0 ? 'positive' : 'negative'}">${formattedChange}</span>)`;
-        });
-    }
-
-    // Atualiza o ticker a cada 5 segundos
-    setInterval(updateTicker, 5000);
-    updateTicker(); // Chama a função inicialmente para exibir os valores
-</script>
-
-</body>
-</html>
     <script>
         function updateTicker() {
             const tickerItems = document.querySelectorAll('.ticker-item');
@@ -983,7 +954,7 @@
                     value += change;
                     const formattedChange = change >= 0 ? `+${change.toFixed(2)}%` : `${change.toFixed(2)}%`;
                     
-                    if (['EUR/USD', 'GBP/USD', 'USD/JPY'"].includes(symbol)) {
+                    if (['EUR/USD', 'GBP/USD', 'USD/JPY', 'USD/BRL'].includes(symbol)) {
                         item.innerHTML = `${symbol}: ${value.toFixed(4)} (<span class="percentage ${change >= 0 ? 'positive' : 'negative'}">${formattedChange}</span>)`;
                     } else {
                         item.innerHTML = `${symbol}: ${value.toFixed(0)} (<span class="percentage ${change >= 0 ? 'positive' : 'negative'}">${formattedChange}</span>)`;
