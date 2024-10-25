@@ -1102,6 +1102,8 @@
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
             font-weight: bold; /* Negrito */
+            text-decoration: none; /* Remove o sublinhado do link */
+            display: inline-block; /* Para que o link se comporte como um botão */
         }
         .btn-action:hover {
             background-color: #218838; /* Verde mais escuro ao passar o mouse */
@@ -1127,7 +1129,7 @@
         <div id="investmentMessage" class="investment-message">Investir R$ 100</div> <!-- Mensagem inicial -->
         <div class="growth-animation" id="investmentValue">R$ 100,00</div> <!-- Valor inicial -->
         <div id="dailyAverage">Média Diária: 0,6%</div> <!-- Texto "Média Diária" -->
-        <button class="btn-action" onclick="showDetails()">Invista Agora</button> <!-- Texto do botão "Invista Agora" -->
+        <a href="https://www.monetamarkets.com/open-live-account/?affid=48016" class="btn-action" target="_blank">Invista Agora</a> <!-- Link atualizado do botão "Invista Agora" -->
     </div>
 
     <script>
@@ -1142,11 +1144,6 @@
                 }, 500); // Tempo que leva para a mensagem desaparecer
             }, 3000); // Espera 3 segundos antes de sumir a mensagem
         }, 1000);
-
-        // Função que pode ser utilizada para direcionar o usuário a outra página ou seção
-        function showDetails() {
-            window.location.href = 'https://zarfstrategy.com'; // Substitua pela URL desejada
-        }
 
         // Função para simular o crescimento do valor de R$ 100 para R$ 432
         function startGrowthAnimation() {
