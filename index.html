@@ -1068,7 +1068,7 @@
             position: fixed;
             top: 50px; /* Ajustado para ficar entre o canto superior e o centro */
             right: 20px; /* Alinhado à direita da tela */
-            background-color: rgba(0, 123, 255, 0.5); /* Cor azul com transparência */
+            background-color: #007bff; /* Cor azul sem transparência */
             color: white;
             padding: 10px; /* Preenchimento */
             border-radius: 8px;
@@ -1094,8 +1094,8 @@
         }
         .btn-action {
             margin-top: 10px;
-            background-color: #fff;
-            color: #007bff; /* Cor do texto do botão */
+            background-color: #28a745; /* Cor verde para o botão */
+            color: #fff; /* Texto branco */
             border: none;
             border-radius: 5px;
             padding: 8px 12px;
@@ -1104,7 +1104,7 @@
             font-weight: bold; /* Negrito */
         }
         .btn-action:hover {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: #218838; /* Verde mais escuro ao passar o mouse */
             transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
         }
         .growth-animation {
@@ -1112,6 +1112,7 @@
             font-weight: bold;
             text-align: center; /* Centraliza o texto */
             margin: 10px 0; /* Margem ajustada para espaço entre o texto */
+            color: white; /* Inicialmente branco */
         }
         .investment-message {
             font-size: 16px; /* Tamanho da fonte da mensagem de investimento */
@@ -1160,20 +1161,22 @@
 
             const interval = setInterval(() => {
                 currentInvestment += growthRate;
+                investmentElement.style.color = 'green'; // Mantém os números em verde durante a contagem
+                investmentElement.textContent = `R$ ${currentInvestment.toFixed(2)}`; // Atualiza o valor
                 if (currentInvestment >= finalInvestment) {
                     currentInvestment = finalInvestment; // Não exceder o alvo
                     clearInterval(interval); // Para a animação quando atingir o alvo
+                    investmentElement.style.color = 'white'; // Muda a cor para branco após a contagem
                     averageElement.textContent = 'Lucro em 3 anos'; // Atualiza o texto para "Lucro em 3 anos"
                     // Nova mensagem após 5 segundos
                     setTimeout(() => {
                         averageElement.textContent = 'Hora de Começar!'; // Atualiza o texto para a nova mensagem
-                        // Faz a animação flutuante desaparecer após 7 segundos
+                        // Desaparece após 5 segundos
                         setTimeout(() => {
-                            document.getElementById('floatingBox').classList.remove('visible');
-                        }, 7000); // 7 segundos
+                            document.getElementById('floatingBox').classList.remove('visible'); // Remove a animação
+                        }, 5000); // 5 segundos
                     }, 5000); // 5 segundos
                 }
-                investmentElement.textContent = `R$ ${currentInvestment.toFixed(2)}`; // Atualiza o valor
             }, intervalTime); // Atualiza a cada 150 ms
 
             // Reinicia a contagem após 60 segundos
