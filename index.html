@@ -1060,17 +1060,17 @@
         body {
             margin: 0;
             padding: 0;
-            height: 2000px; /* Para demonstrar o efeito de rolagem */
+            height: 2000px;
             background-color: #f4f4f4;
-            font-family: Arial, sans-serif; /* Fonte padrão */
+            font-family: Arial, sans-serif;
         }
         .floating-box {
             position: fixed;
-            top: 50px; /* Ajustado para ficar entre o canto superior e o centro */
-            right: 20px; /* Alinhado à direita da tela */
-            background-color: #0056b3; /* Azul mais escuro */
+            top: 50px;
+            right: 20px;
+            background-color: #0056b3;
             color: white;
-            padding: 10px; /* Preenchimento */
+            padding: 10px;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             display: flex;
@@ -1080,7 +1080,7 @@
             transform: translateY(20px);
             transition: opacity 0.5s, transform 0.5s;
             z-index: 1000;
-            width: 150px; /* Largura ajustada */
+            width: 150px;
         }
         .floating-box.visible {
             opacity: 1;
@@ -1090,99 +1090,95 @@
             margin-top: 5px;
             font-weight: bold;
             text-align: center;
-            font-size: 16px; /* Tamanho da fonte */
+            font-size: 16px;
         }
         .btn-action {
             margin-top: 10px;
-            background-color: #28a745; /* Cor verde para o botão */
-            color: #fff; /* Texto branco */
+            background-color: #28a745;
+            color: #fff;
             border: none;
             border-radius: 5px;
-            padding: 8px 12px;
+            padding: 6px 10px; /* Diminuído o tamanho do contorno */
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
-            font-weight: bold; /* Negrito */
-            text-decoration: none; /* Remove o sublinhado do link */
-            display: inline-block; /* Para que o link se comporte como um botão */
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px; /* Ajuste de tamanho de fonte */
         }
         .btn-action:hover {
-            background-color: #218838; /* Verde mais escuro ao passar o mouse */
-            transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+            background-color: #218838;
+            transform: scale(1.05);
         }
         .growth-animation {
-            font-size: 20px; /* Tamanho da fonte do crescimento */
-            font-weight: bold;
-            text-align: center; /* Centraliza o texto */
-            margin: 10px 0; /* Margem ajustada para espaço entre o texto */
-            color: white; /* Inicialmente branco */
-        }
-        .investment-message {
-            font-size: 16px; /* Tamanho da fonte da mensagem de investimento */
+            font-size: 20px;
             font-weight: bold;
             text-align: center;
-            margin-bottom: 10px; /* Margem inferior */
+            margin: 10px 0;
+            color: white;
+        }
+        .investment-message {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
     <div class="floating-box" id="floatingBox">
-        <div id="investmentMessage" class="investment-message">Investir R$ 100</div> <!-- Mensagem inicial -->
-        <div class="growth-animation" id="investmentValue">R$ 100,00</div> <!-- Valor inicial -->
-        <div id="dailyAverage">Média Diária: 0,6%</div> <!-- Texto "Média Diária" -->
-        <a href="https://www.monetamarkets.com/open-live-account/?affid=48016" class="btn-action" target="_blank">Invista Agora</a> <!-- Link atualizado do botão "Invista Agora" -->
+        <div id="investmentMessage" class="investment-message">Investir R$ 100</div>
+        <div class="growth-animation" id="investmentValue">R$ 100,00</div>
+        <div id="dailyAverage">Média Diária: 0,6%</div>
+        <a href="https://www.monetamarkets.com/open-live-account/?affid=48016" class="btn-action" target="_blank">Invista Agora</a>
     </div>
 
     <script>
-        // Exibe a animação flutuante após 1 segundo
         setTimeout(() => {
             document.getElementById('floatingBox').classList.add('visible');
             setTimeout(() => {
-                document.getElementById('investmentMessage').style.opacity = 0; // Faz a mensagem de investimento sumir
+                document.getElementById('investmentMessage').style.opacity = 0;
                 setTimeout(() => {
-                    document.getElementById('investmentMessage').style.display = 'none'; // Remove a mensagem do fluxo
-                    startGrowthAnimation(); // Inicia a animação de crescimento do valor
-                }, 500); // Tempo que leva para a mensagem desaparecer
-            }, 3000); // Espera 3 segundos antes de sumir a mensagem
+                    document.getElementById('investmentMessage').style.display = 'none';
+                    startGrowthAnimation();
+                }, 500);
+            }, 3000);
         }, 1000);
 
-        // Função para simular o crescimento do valor de R$ 100 para R$ 432
         function startGrowthAnimation() {
             let investmentElement = document.getElementById('investmentValue');
             let averageElement = document.getElementById('dailyAverage');
-            let currentInvestment = 100; // Contador inicial de R$ 100
-            const finalInvestment = 432; // Valor final que o investimento deve alcançar
-            const duration = 8000; // Duração total da animação em milissegundos (8 segundos)
-            const intervalTime = 150; // Tempo entre cada atualização em milissegundos
-            const totalSteps = duration / intervalTime; // Total de etapas de animação
-            const growthRate = (finalInvestment - currentInvestment) / totalSteps; // Crescimento gradual
+            let currentInvestment = 100;
+            const finalInvestment = 432;
+            const duration = 8000;
+            const intervalTime = 150;
+            const totalSteps = duration / intervalTime;
+            const growthRate = (finalInvestment - currentInvestment) / totalSteps;
 
             const interval = setInterval(() => {
                 currentInvestment += growthRate;
-                investmentElement.style.color = 'green'; // Mantém os números em verde durante a contagem
-                investmentElement.textContent = `R$ ${currentInvestment.toFixed(2)}`; // Atualiza o valor
+                investmentElement.style.color = 'green';
+                investmentElement.textContent = `R$ ${currentInvestment.toFixed(2)}`;
                 if (currentInvestment >= finalInvestment) {
-                    currentInvestment = finalInvestment; // Não exceder o alvo
-                    clearInterval(interval); // Para a animação quando atingir o alvo
-                    investmentElement.style.color = 'white'; // Muda a cor para branco após a contagem
-                    averageElement.textContent = 'Lucro em 3 anos'; // Atualiza o texto para "Lucro em 3 anos"
-                    // Nova mensagem após 5 segundos
+                    currentInvestment = finalInvestment;
+                    clearInterval(interval);
+                    investmentElement.style.color = 'white';
+                    averageElement.textContent = 'Lucro em 3 anos';
                     setTimeout(() => {
-                        averageElement.textContent = 'Hora de Começar!'; // Atualiza o texto para a nova mensagem
-                        // Desaparece após 5 segundos
+                        averageElement.textContent = 'Hora de Começar!';
                         setTimeout(() => {
-                            document.getElementById('floatingBox').classList.remove('visible'); // Remove a animação
-                        }, 5000); // 5 segundos
-                    }, 5000); // 5 segundos
+                            document.getElementById('floatingBox').classList.remove('visible');
+                        }, 5000);
+                    }, 5000);
                 }
-            }, intervalTime); // Atualiza a cada 150 ms
+            }, intervalTime);
 
-            // Reinicia a contagem após 60 segundos
             setTimeout(() => {
-                currentInvestment = 100; // Reinicia o valor
-                investmentElement.textContent = `R$ ${currentInvestment.toFixed(2)}`; // Atualiza para R$ 100
-                averageElement.textContent = 'Média Diária: 0,6%'; // Restaura o texto original
-                startGrowthAnimation(); // Reinicia a animação
-            }, 60000); // 60 segundos
+                currentInvestment = 100;
+                investmentElement.textContent = `R$ ${currentInvestment.toFixed(2)}`;
+                averageElement.textContent = 'Média Diária: 0,6%';
+                startGrowthAnimation();
+            }, 60000);
         }
     </script>
 </body>
