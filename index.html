@@ -1049,6 +1049,7 @@
     </script>
 </body>
 </html>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -1166,6 +1167,10 @@
                     // Nova mensagem após 5 segundos
                     setTimeout(() => {
                         averageElement.textContent = 'Hora de Começar!'; // Atualiza o texto para a nova mensagem
+                        // Faz a animação flutuante desaparecer após 7 segundos
+                        setTimeout(() => {
+                            document.getElementById('floatingBox').classList.remove('visible');
+                        }, 7000); // 7 segundos
                     }, 5000); // 5 segundos
                 }
                 investmentElement.textContent = `R$ ${currentInvestment.toFixed(2)}`; // Atualiza o valor
