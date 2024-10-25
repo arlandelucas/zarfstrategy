@@ -1049,3 +1049,136 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animação Flutuante de Rentabilidade</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 2000px; /* Para demonstrar o efeito de rolagem */
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif; /* Fonte padrão */
+        }
+        .floating-box {
+            position: fixed;
+            top: 50px; /* Ajustado para ficar entre o canto superior e o centro */
+            right: 20px; /* Alinhado à direita da tela */
+            background-color: rgba(0, 123, 255, 0.5); /* Cor azul com transparência */
+            color: white;
+            padding: 10px; /* Preenchimento */
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+            z-index: 1000;
+            width: 150px; /* Largura ajustada */
+        }
+        .floating-box.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .call-to-action {
+            margin-top: 5px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 16px; /* Tamanho da fonte */
+        }
+        .btn-action {
+            margin-top: 10px;
+            background-color: #fff;
+            color: #007bff; /* Cor do texto do botão */
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: bold; /* Negrito */
+        }
+        .btn-action:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+        }
+        .growth-animation {
+            font-size: 20px; /* Tamanho da fonte do crescimento */
+            font-weight: bold;
+            text-align: center; /* Centraliza o texto */
+            margin: 10px 0; /* Margem ajustada para espaço entre o texto */
+        }
+        .investment-message {
+            font-size: 16px; /* Tamanho da fonte da mensagem de investimento */
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px; /* Margem inferior */
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-box" id="floatingBox">
+        <div id="investmentMessage" class="investment-message">Investir R$ 100</div> <!-- Mensagem inicial -->
+        <div class="growth-animation" id="investmentValue">R$ 100,00</div> <!-- Valor inicial -->
+        <div id="dailyAverage">Média Diária: 0,6%</div> <!-- Texto "Média Diária" -->
+        <button class="btn-action" onclick="showDetails()">Invista Agora</button> <!-- Texto do botão "Invista Agora" -->
+    </div>
+
+    <script>
+        // Exibe a animação flutuante após 1 segundo
+        setTimeout(() => {
+            document.getElementById('floatingBox').classList.add('visible');
+            setTimeout(() => {
+                document.getElementById('investmentMessage').style.opacity = 0; // Faz a mensagem de investimento sumir
+                setTimeout(() => {
+                    document.getElementById('investmentMessage').style.display = 'none'; // Remove a mensagem do fluxo
+                    startGrowthAnimation(); // Inicia a animação de crescimento do valor
+                }, 500); // Tempo que leva para a mensagem desaparecer
+            }, 3000); // Espera 3 segundos antes de sumir a mensagem
+        }, 1000);
+
+        // Função que pode ser utilizada para direcionar o usuário a outra página ou seção
+        function showDetails() {
+            window.location.href = 'https://zarfstrategy.com'; // Substitua pela URL desejada
+        }
+
+        // Função para simular o crescimento do valor de R$ 100 para R$ 432
+        function startGrowthAnimation() {
+            let investmentElement = document.getElementById('investmentValue');
+            let averageElement = document.getElementById('dailyAverage');
+            let currentInvestment = 100; // Contador inicial de R$ 100
+            const finalInvestment = 432; // Valor final que o investimento deve alcançar
+            const duration = 8000; // Duração total da animação em milissegundos (8 segundos)
+            const intervalTime = 150; // Tempo entre cada atualização em milissegundos
+            const totalSteps = duration / intervalTime; // Total de etapas de animação
+            const growthRate = (finalInvestment - currentInvestment) / totalSteps; // Crescimento gradual
+
+            const interval = setInterval(() => {
+                currentInvestment += growthRate;
+                if (currentInvestment >= finalInvestment) {
+                    currentInvestment = finalInvestment; // Não exceder o alvo
+                    clearInterval(interval); // Para a animação quando atingir o alvo
+                    averageElement.textContent = 'Lucro em 3 anos'; // Atualiza o texto para "Lucro em 3 anos"
+                    // Nova mensagem após 5 segundos
+                    setTimeout(() => {
+                        averageElement.textContent = 'Hora de Começar!'; // Atualiza o texto para a nova mensagem
+                    }, 5000); // 5 segundos
+                }
+                investmentElement.textContent = `R$ ${currentInvestment.toFixed(2)}`; // Atualiza o valor
+            }, intervalTime); // Atualiza a cada 150 ms
+
+            // Reinicia a contagem após 60 segundos
+            setTimeout(() => {
+                currentInvestment = 100; // Reinicia o valor
+                investmentElement.textContent = `R$ ${currentInvestment.toFixed(2)}`; // Atualiza para R$ 100
+                averageElement.textContent = 'Média Diária: 0,6%'; // Restaura o texto original
+                startGrowthAnimation(); // Reinicia a animação
+            }, 60000); // 60 segundos
+        }
+    </script>
+</body>
+</html>
